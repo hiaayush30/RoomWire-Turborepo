@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@repo/ui/components/button"
 import { Card, CardContent } from "@repo/ui/components/card"
-import { MessageCircle, Users, Database, Share2, Zap, Shield, ArrowDownWideNarrowIcon, ArrowDown, Router } from "lucide-react"
+import { MessageCircle, Users, Database, Share2, Zap, Shield, ArrowDown } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -9,7 +9,7 @@ import { useRef } from "react"
 
 export default function LandingPage() {
   const router = useRouter();
-  const scrollRef = useRef<null|HTMLDivElement>(null);
+  const scrollRef = useRef<null | HTMLDivElement>(null);
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-950 via-orange-950 to-red-900">
       {/* Navigation */}
@@ -56,7 +56,7 @@ export default function LandingPage() {
               variant="outline"
               className="border-orange-500 text-orange-400 hover:bg-orange-900/30 px-8 py-4 text-lg"
               onClick={() => {
-                scrollRef.current?.scrollIntoView({behavior:"smooth"});
+                scrollRef.current?.scrollIntoView({ behavior: "smooth" });
               }}
             >
               See How It Works <ArrowDown />
