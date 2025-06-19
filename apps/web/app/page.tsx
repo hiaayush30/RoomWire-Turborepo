@@ -2,11 +2,14 @@
 import { Button } from "@repo/ui/components/button"
 import { Card, CardContent } from "@repo/ui/components/card"
 import { MessageCircle, Users, Database, Share2, Zap, Shield, ArrowDownWideNarrowIcon, ArrowDown, Router } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { useRef } from "react"
 
 export default function LandingPage() {
   const router = useRouter();
+  const scrollRef = useRef<null|HTMLDivElement>(null);
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-950 via-orange-950 to-red-900">
       {/* Navigation */}
@@ -18,14 +21,14 @@ export default function LandingPage() {
               <span className="text-2xl font-bold text-white">RoomWire</span>
             </div>
             <div className="flex items-center space-x-4">
-              <Button 
-              onClick={()=>router.push("/login")}
-              variant="ghost" className="text-gray-300 hover:text-white hover:bg-orange-900/30">
+              <Button
+                onClick={() => router.push("/login")}
+                variant="ghost" className="text-gray-300 hover:text-white hover:bg-orange-900/30">
                 Login
               </Button>
-              <Button 
-              onClick={()=>router.push("/signup")}
-              className="bg-orange-600 hover:bg-orange-700 text-white">Sign Up</Button>
+              <Button
+                onClick={() => router.push("/signup")}
+                className="bg-orange-600 hover:bg-orange-700 text-white">Sign Up</Button>
             </div>
           </div>
         </div>
@@ -43,17 +46,20 @@ export default function LandingPage() {
             with persistent messaging.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-            onClick={()=>router.push("/login")}
-            size="lg" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-lg">
+            <Button
+              onClick={() => router.push("/login")}
+              size="lg" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-lg">
               Create Your First Room
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="border-orange-500 text-orange-400 hover:bg-orange-900/30 px-8 py-4 text-lg"
+              onClick={() => {
+                scrollRef.current?.scrollIntoView({behavior:"smooth"});
+              }}
             >
-              See How It Works <ArrowDown/>
+              See How It Works <ArrowDown />
             </Button>
           </div>
         </div>
@@ -62,7 +68,7 @@ export default function LandingPage() {
       {/* App Preview Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div ref={scrollRef} className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-3xl font-bold text-white mb-4">See RoomWire in Action</h3>
               <p className="text-gray-300 text-lg">
@@ -70,8 +76,14 @@ export default function LandingPage() {
                 with others effortless and enjoyable.
               </p>
             </div>
-            <div className="bg-blue-600 rounded-lg p-8 min-h-[300px] flex items-center justify-center">
-              <p className="text-white text-lg font-medium">App Screenshot / Demo Image</p>
+            <div className="rounded-lg min-h-[300px] flex items-center justify-center">
+              <Image
+                alt="demo image"
+                src={"/image.png"}
+                width={800}
+                height={800}
+                className="w-full rounded-md shadow-md hover:shadow-lg rotate-2 shadow-red-600 hover:scale-105 transition-all"
+              />
             </div>
           </div>
         </div>
@@ -167,8 +179,14 @@ export default function LandingPage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="bg-blue-600 rounded-lg p-8 min-h-[350px] flex items-center justify-center">
-              <p className="text-white text-lg font-medium">Live Chat Interface Image</p>
+            <div className=" rounded-lg p-8 min-h-[350px] flex items-center justify-center">
+              <Image
+                alt="demo image"
+                src={"/image2.png"}
+                height={800}
+                width={800}
+                className="w-[1000px] rounded-md shadow-md hover:shadow-lg -rotate-2 shadow-red-600 hover:scale-105 transition-all"
+              />
             </div>
             <div>
               <h3 className="text-3xl font-bold text-white mb-4">Real-Time Conversations</h3>
@@ -226,20 +244,6 @@ export default function LandingPage() {
               <h3 className="text-xl font-semibold text-white mb-2">Share & Chat</h3>
               <p className="text-gray-300">Share the room name and start your live conversation</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Room Management Preview */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-orange-950/40">
-        <div className="max-w-7xl mx-auto text-center">
-          <h3 className="text-3xl font-bold text-white mb-4">Manage Your Rooms</h3>
-          <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-            Create, organize, and manage multiple chat rooms from one dashboard. Keep track of all your conversations in
-            one place.
-          </p>
-          <div className="bg-blue-600 rounded-lg p-8 min-h-[280px] flex items-center justify-center max-w-4xl mx-auto">
-            <p className="text-white text-lg font-medium">Room Dashboard / Management Interface</p>
           </div>
         </div>
       </section>

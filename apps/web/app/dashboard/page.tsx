@@ -6,7 +6,7 @@ import { Input } from "@repo/ui/components/input"
 import { Label } from "@repo/ui/components/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@repo/ui/components/card"
 import { Separator } from "@repo/ui/components/separator"
-import { Palette, Plus, Users, ArrowRight } from "lucide-react"
+import { Palette, Plus, Users, ArrowRight, MessageCircle } from "lucide-react"
 import Link from "next/link"
 import { signOut, useSession } from 'next-auth/react'
 import axios, { AxiosError } from 'axios'
@@ -66,9 +66,9 @@ function Dashboard() {
         {/* Header */}
         <header className="border-b border-red-900 bg-[#1a0a05]/80">
           <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2">
-              <Palette className="h-8 w-8 text-red-400" />
-              <span className="text-2xl font-bold text-red-100">Excaliberate</span>
+            <Link href={"/"} className="flex items-center space-x-2 mb-4 md:mb-0">
+              <MessageCircle className="h-6 w-6 text-orange-500" />
+              <span className="text-xl font-bold text-white">RoomWire</span>
             </Link>
             <div className="flex items-center space-x-4">
               <span className="text-red-300">Welcome {session.user.name}!</span>
@@ -93,7 +93,7 @@ function Dashboard() {
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">Ready to Create?</h1>
             <p className="text-xl text-red-300 max-w-2xl mx-auto">
-              Start a new drawing room or join friends in an existing one. Your canvas awaits!
+              Start a new chat room or join friends in an existing one.
             </p>
           </div>
 
@@ -106,7 +106,7 @@ function Dashboard() {
                 </div>
                 <CardTitle className="text-2xl text-white">Create Room</CardTitle>
                 <CardDescription className="text-red-300">
-                  Start a new drawing session and invite others to join
+                  Start a new chat session and invite others to join
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -138,7 +138,7 @@ function Dashboard() {
                 </div>
                 <CardTitle className="text-2xl text-white">Join Room</CardTitle>
                 <CardDescription className="text-red-300">
-                  Enter a room ID to join an existing drawing session
+                  Enter a room ID to join an existing chat session
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -186,7 +186,7 @@ function Dashboard() {
               <CardContent className="space-y-3">
                 {[
                   "Room IDs are case-insensitive and automatically generated when you create a room",
-                  "Share your room ID with friends to collaborate on drawings in real-time",
+                  "Share your room ID with friends to chat in real-time",
                   "All drawings are automatically saved and synced across all participants",
                 ].map((tip, index) => (
                   <div key={index} className="flex items-start space-x-3">
